@@ -1,7 +1,14 @@
 output "bucket_id" {
-  value = aws_s3_bucket.images.id
+  description = "ID / Nombre del bucket S3 de imagenes"
+  value       = aws_s3_bucket.images.id
+}
+
+output "bucket_name" {
+  description = "Nombre del bucket S3 de imagenes"
+  value       = aws_s3_bucket.images.id
 }
 
 output "bucket_arn" {
-  value = aws_s3_bucket.images.arn
+  description = "ARN del bucket S3 de imagenes"
+  value       = aws_s3_bucket.images.arn
 }

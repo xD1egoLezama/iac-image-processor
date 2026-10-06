@@ -43,3 +43,13 @@ module "iam" {
   s3_bucket_arn = module.s3.bucket_arn
   sqs_queue_arn = module.sqs.queue_arn
 }
+
+module "lambda" {
+  source             = "../../modules/lambda"
+  environment        = "dev"
+  role_arn           = module.iam.lambda_role_arn
+  subnet_ids         = module.network.private_subnet_ids
+  security_group_ids = [module.security.lambda_security_group_id]
+  s3_bucket_name     = module.s3.bucket_name
+  sqs_queue_arn      = module.sqs.queue_arn
+}
