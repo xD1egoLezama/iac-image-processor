@@ -1,24 +1,4 @@
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
-
-module "network" {
-  source      = "../../modules/network"
-  environment = "dev"
-}
-
-module "security" {
-  source      = "../../modules/security"
-  vpc_id      = module.network.vpc_id
-  environment = "dev"
+output "lambda_security_group_id" {
+  description = "ID del Security Group para la funcion Lambda"
+  value       = aws_security_group.lambda_sg.id
 }

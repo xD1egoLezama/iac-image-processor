@@ -5,6 +5,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
+    }
   }
 }
 
@@ -14,5 +18,21 @@ provider "aws" {
 
 module "network" {
   source      = "../../modules/network"
+  environment = "dev"
+}
+
+module "security" {
+  source      = "../../modules/security"
+  vpc_id      = module.network.vpc_id
+  environment = "dev"
+}
+
+module "sqs" {
+  source      = "../../modules/sqs"
+  environment = "dev"
+}
+
+module "s3" {
+  source      = "../../modules/s3"
   environment = "dev"
 }
