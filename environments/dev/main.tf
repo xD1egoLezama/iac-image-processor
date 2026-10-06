@@ -36,3 +36,10 @@ module "s3" {
   source      = "../../modules/s3"
   environment = "dev"
 }
+
+module "iam" {
+  source        = "../../modules/iam"
+  environment   = "dev"
+  s3_bucket_arn = module.s3.bucket_arn
+  sqs_queue_arn = module.sqs.queue_arn
+}
