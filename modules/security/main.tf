@@ -1,6 +1,6 @@
 resource "aws_security_group" "lambda_sg" {
-  name        = "sg-lambda-processor-${var.environment}"
-  description = "Security Group para las funciones Lambda de procesamiento de imagenes"
+  name        = "lambda-processor-${var.environment}"
+  description = "Security Group para la Lambda de procesamiento"
   vpc_id      = var.vpc_id
 
   egress {
